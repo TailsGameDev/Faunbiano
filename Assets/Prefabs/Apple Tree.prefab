@@ -582,6 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389fe8fda90c17c4abee190f1b867790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  treeType: 1
   cooldown: 1
   bulletSpawnPoint: {fileID: 6684800516870954318}
   damageable: {fileID: 3092115495467952534}

@@ -315,6 +315,7 @@ MonoBehaviour:
   attackPower: 10
   enemie: {fileID: 3152431799981884607}
   animator: {fileID: 2249369966482046568}
+  treeTypesEnabledToHit: 01000000
 --- !u!50 &2307778768269567694
 Rigidbody2D:
   serializedVersion: 4

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +5,7 @@ public class LamberjackDamager : Damager
 {
     [SerializeField] private Enemie enemie;
     [SerializeField] private Animator animator;
+    [SerializeField] private List<Tree.TreeTypeEnum> treeTypesEnabledToHit = null;
 
     private void Awake()
     {
@@ -18,7 +18,8 @@ public class LamberjackDamager : Damager
         if (collisionHandler != null)
         {
             Tree tree = collisionHandler.ScriptsHolder.GetComponent<Tree>();
-            if (tree != null)
+            // TODO Not accept all types of trees
+            if (tree != null && treeTypesEnabledToHit.Contains(tree.TreeType))
             {
                 enemie.TreeToChop = tree;
             }

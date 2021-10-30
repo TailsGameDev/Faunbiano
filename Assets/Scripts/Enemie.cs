@@ -126,6 +126,4 @@ public class Enemie : MonoBehaviour
 
         return isThereSomethingInTheWay;
     }
-
-    
 }

@@ -398,8 +398,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6523b629db05f04aa87aab3e2efa27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawnPoint: {fileID: 4005288908833949257}
+  treeType: 2
   cooldown: 10
+  bulletSpawnPoint: {fileID: 4005288908833949257}
+  damageable: {fileID: 0}
 --- !u!50 &3852341849485222435
 Rigidbody2D:
   serializedVersion: 4

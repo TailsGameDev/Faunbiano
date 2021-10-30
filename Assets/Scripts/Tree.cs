@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour
 {
+    public enum TreeTypeEnum
+    {
+        NONE,
+        APPLE_TREE,
+        MOTHER_TREE,
+        BUSH,
+    }
+
+    [SerializeField] private TreeTypeEnum treeType = 0;
+
     // NOTE: cooldown unity is seconds
     [SerializeField] private float cooldown = 0.0f;
     private float timeToShoot;
@@ -19,6 +29,7 @@ public class Tree : MonoBehaviour
 
     protected TransformWrapper BulletSpawnPoint { get => bulletSpawnPointWrapper; }
     public Damageable Damageable { get => damageable; }
+    public TreeTypeEnum TreeType { get => treeType; }
 
     private void Awake()
     {
