@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7855902136966984198}
   - component: {fileID: 3152431799981884607}
   - component: {fileID: 2307778768269567694}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lumberjack
   m_TagString: Enemie
   m_Icon: {fileID: 0}
@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 567f10281f61fe74081a7aa772f27d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb2D: {fileID: 2307778768269567694}
+  speed: 0.7
+  cooldownToChangeDirection: 2
 --- !u!50 &2307778768269567694
 Rigidbody2D:
   serializedVersion: 4
@@ -58,7 +61,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -76,7 +79,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7855902137100966932}
   - component: {fileID: 7855902137100966923}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lumberjack Eye Right
   m_TagString: Enemie
   m_Icon: {fileID: 0}
@@ -160,7 +163,7 @@ GameObject:
   - component: {fileID: 959690901000613451}
   - component: {fileID: 7855902137181348643}
   - component: {fileID: 7855902137181348652}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lumberjack Sprites
   m_TagString: Enemie
   m_Icon: {fileID: 0}
@@ -286,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7855902137337541044}
   - component: {fileID: 7855902137337541035}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lumberjack Hat
   m_TagString: Enemie
   m_Icon: {fileID: 0}
@@ -368,7 +371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7855902138131839252}
   - component: {fileID: 7855902138131839243}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lumberjack Clothes
   m_TagString: Enemie
   m_Icon: {fileID: 0}
@@ -450,7 +453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7855902138520675678}
   - component: {fileID: 7855902138520675677}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lumberjack Skin
   m_TagString: Enemie
   m_Icon: {fileID: 0}
@@ -532,7 +535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7855902138546715256}
   - component: {fileID: 7855902138546715263}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lumberjack Eye Left
   m_TagString: Enemie
   m_Icon: {fileID: 0}
