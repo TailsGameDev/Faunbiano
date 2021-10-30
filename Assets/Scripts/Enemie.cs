@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemie : MonoBehaviour
@@ -14,6 +15,7 @@ public class Enemie : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2D = null;
     [SerializeField] private float speed = 0.0f;
     [SerializeField] private float cooldownToChangeDirection = 0.0f;
+    [SerializeField] private List<Tree.TreeTypeEnum> treeTypesToIgnoreInPathfinding = null;
 
     private Vector3[] wanderDirections;
     private Vector3 wanderDirection = Vector3.zero;
@@ -96,7 +98,7 @@ public class Enemie : MonoBehaviour
     private void DecideIfToWanderOrPursueMotherTree(ref State nextState)
     {
         // Change state to wander if needed
-        if (!IsThereSomethingInTheWayToMotherTree())
+        if (!IsThereObstacleInTheWayToMotherTree())
         {
             nextState = State.WALK_TO_MOTHER_TREE;
         }
@@ -111,8 +113,9 @@ public class Enemie : MonoBehaviour
             timeToEndCurrentWandering = Time.time + cooldownToChangeDirection;
         }
     }
-    private bool IsThereSomethingInTheWayToMotherTree()
+    private bool IsThereObstacleInTheWayToMotherTree()
     {
+        // Check if have hit something
         const float PATHFINDING_MAX_DISTANCE = 2.0f;
         RaycastHit2D raycastHit = Physics2D.BoxCast
             (
@@ -124,6 +127,18 @@ public class Enemie : MonoBehaviour
             );
         bool isThereSomethingInTheWay = raycastHit.collider != null;
 
-        return isThereSomethingInTheWay;
+        // Check if TreeType is an obstable
+        bool isThereAnObstacleInTheWay = false;
+        if (isThereSomethingInTheWay)
+        {
+            CollisionHandler collisionHandler = raycastHit.collider.GetComponent<CollisionHandler>();
+            Tree tree = collisionHandler.ScriptsHolder.GetComponent<Tree>();
+            if (tree != null)
+            {
+                isThereAnObstacleInTheWay = !treeTypesToIgnoreInPathfinding.Contains(tree.TreeType);
+            }
+        }
+
+        return isThereAnObstacleInTheWay;
     }
 }

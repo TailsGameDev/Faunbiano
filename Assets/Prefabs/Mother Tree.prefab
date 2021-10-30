@@ -363,6 +363,8 @@ GameObject:
   - component: {fileID: 4108697508325309282}
   - component: {fileID: 4108697508325309292}
   - component: {fileID: 3852341849485222435}
+  - component: {fileID: 6445638335291439180}
+  - component: {fileID: 7613443131616539413}
   m_Layer: 0
   m_Name: Mother Tree
   m_TagString: Untagged
@@ -401,7 +403,7 @@ MonoBehaviour:
   treeType: 2
   cooldown: 10
   bulletSpawnPoint: {fileID: 4005288908833949257}
-  damageable: {fileID: 0}
+  damageable: {fileID: 6445638335291439180}
 --- !u!50 &3852341849485222435
 Rigidbody2D:
   serializedVersion: 4
@@ -423,6 +425,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &6445638335291439180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4108697508325309293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53d70277c9af724fae3419772000fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 200
+  lifeToDie: 20
+  shaker: {fileID: 7613443131616539413}
+--- !u!114 &7613443131616539413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4108697508325309293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e70c3e4a0c4e4a40be82880811b0ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsAmount: 7
+  distanceRange: 0.15
+  loopDuration: 0.05
 --- !u!1 &8528950947090048035
 GameObject:
   m_ObjectHideFlags: 0
