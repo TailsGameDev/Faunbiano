@@ -30,7 +30,7 @@ public class Enemie : MonoBehaviour
         wanderDirections = new Vector3[] { Vector3.left, Vector3.right, Vector3.down };
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         State nextState = currentState;
         switch (currentState)

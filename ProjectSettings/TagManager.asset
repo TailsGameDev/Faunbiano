@@ -54,3 +54,6 @@ TagManager:
   - name: Bullet
     uniqueID: 3447241541
     locked: 0
+  - name: TurrentDetails
+    uniqueID: 2644631193
+    locked: 0
