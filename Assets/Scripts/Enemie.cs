@@ -76,6 +76,7 @@ public class Enemie : MonoBehaviour
             case State.ATTACK:
                 {
                     rb2D.isKinematic = true;
+                    rb2D.velocity = Vector3.zero;
 
                     if (treeToChop == null)
                     {
