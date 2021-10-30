@@ -45,6 +45,7 @@ public class Enemie : MonoBehaviour
         {
             case State.WALK_TO_MOTHER_TREE:
                 {
+                    rb2D.isKinematic = false;
                     rb2D.AddForce(GetMotherTreeDirection() * speed, ForceMode2D.Force);
 
                     if (this.treeToChop != null)
@@ -59,6 +60,7 @@ public class Enemie : MonoBehaviour
                 }
             case State.WANDER:
                 {
+                    rb2D.isKinematic = false;
                     rb2D.AddForce(this.wanderDirection * speed, ForceMode2D.Force);
 
                     if (this.treeToChop != null)
@@ -73,6 +75,8 @@ public class Enemie : MonoBehaviour
                 }
             case State.ATTACK:
                 {
+                    rb2D.isKinematic = true;
+
                     if (treeToChop == null)
                     {
                         DecideIfToWanderOrPursueMotherTree(ref nextState);
