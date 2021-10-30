@@ -544,6 +544,8 @@ GameObject:
   - component: {fileID: 5932803324967379045}
   - component: {fileID: 7283966006198031937}
   - component: {fileID: 6784337684088027428}
+  - component: {fileID: 3092115495467952534}
+  - component: {fileID: 1505650044360862652}
   m_Layer: 0
   m_Name: Apple Tree
   m_TagString: Untagged
@@ -580,8 +582,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389fe8fda90c17c4abee190f1b867790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawnPoint: {fileID: 6684800516870954318}
   cooldown: 1
+  bulletSpawnPoint: {fileID: 6684800516870954318}
+  damageable: {fileID: 3092115495467952534}
 --- !u!50 &6784337684088027428
 Rigidbody2D:
   serializedVersion: 4
@@ -603,6 +606,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &3092115495467952534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932803324967379050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53d70277c9af724fae3419772000fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 30
+  lifeToDie: 5
+  shaker: {fileID: 1505650044360862652}
+--- !u!114 &1505650044360862652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932803324967379050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e70c3e4a0c4e4a40be82880811b0ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsAmount: 7
+  distanceRange: 0.15
+  loopDuration: 0.05
 --- !u!1 &8862345642730670293
 GameObject:
   m_ObjectHideFlags: 0

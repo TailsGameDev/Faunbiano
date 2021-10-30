@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour
 {
-    [SerializeField] private Transform bulletSpawnPoint;
-    
     // NOTE: cooldown unity is seconds
     [SerializeField] private float cooldown = 0.0f;
     private float timeToShoot;
 
+    [SerializeField] private Transform bulletSpawnPoint;
+    private TransformWrapper bulletSpawnPointWrapper;
+    
+    [SerializeField] private Damageable damageable;
+
     private List<Enemie> enemiesInRange = new List<Enemie>();
 
-    private TransformWrapper bulletSpawnPointWrapper;
-    protected TransformWrapper BulletSpawnPoint { get => bulletSpawnPointWrapper; }
     protected float Cooldown { get => cooldown; }
+
+    protected TransformWrapper BulletSpawnPoint { get => bulletSpawnPointWrapper; }
+    public Damageable Damageable { get => damageable; }
 
     private void Awake()
     {
@@ -67,7 +71,6 @@ public class Tree : MonoBehaviour
 
             if (!enemiesInRange.Contains(enemie))
             {
-                Debug.Log("Lumberyard inserted", enemie);
                 enemiesInRange.Add(enemie);
             }
         }

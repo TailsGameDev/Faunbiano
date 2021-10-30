@@ -6,22 +6,28 @@ public class Enemie : MonoBehaviour
     {
         WALK_TO_MOTHER_TREE,
         WANDER,
+        ATTACK,
     }
+
+    private State currentState;
 
     [SerializeField] private Rigidbody2D rb2D = null;
     [SerializeField] private float speed = 0.0f;
     [SerializeField] private float cooldownToChangeDirection = 0.0f;
 
-    private State currentState;
-
-    private TransformWrapper transformWrapper;
-
     private Vector3[] wanderDirections;
     private Vector3 wanderDirection = Vector3.zero;
+    private float timeToEndCurrentWandering;
+    private TransformWrapper transformWrapper;
 
-    private float timeToChangeDirection;
+    [SerializeField] private float attacksCooldown = 0.0f;
+    private float timeToAttack;
+    private Tree treeToChop;
+    private Damager damager = null;
 
     public TransformWrapper TransformWrapper { get => transformWrapper; }
+    public Tree TreeToChop { set => treeToChop = value; }
+    public Damager Damager { set => damager = value; }
 
     private void Awake()
     {
@@ -39,16 +45,42 @@ public class Enemie : MonoBehaviour
                 {
                     rb2D.AddForce(GetMotherTreeDirection() * speed, ForceMode2D.Force);
 
-                    DecideIfToWanderOrToReachMotherTree(ref nextState);
+                    if (this.treeToChop != null)
+                    {
+                        nextState = State.ATTACK;
+                    }
+                    else
+                    {
+                        DecideIfToWanderOrPursueMotherTree(ref nextState);
+                    }
                     break;
                 }
             case State.WANDER:
                 {
                     rb2D.AddForce(this.wanderDirection * speed, ForceMode2D.Force);
 
-                    if (Time.time > timeToChangeDirection)
+                    if (this.treeToChop != null)
                     {
-                        DecideIfToWanderOrToReachMotherTree(ref nextState);
+                        nextState = State.ATTACK;
+                    }
+                    else if (Time.time > timeToEndCurrentWandering)
+                    {
+                        DecideIfToWanderOrPursueMotherTree(ref nextState);
+                    }
+                    break;
+                }
+            case State.ATTACK:
+                {
+                    if (treeToChop == null)
+                    {
+                        DecideIfToWanderOrPursueMotherTree(ref nextState);
+                    }
+                    else if (Time.time > timeToAttack)
+                    {
+                        timeToAttack = Time.time + attacksCooldown;
+
+                        damager.DealDamage(treeToChop.Damageable);
+                        treeToChop.Damageable.TakeDamage(damager);
                     }
                     break;
                 }
@@ -61,7 +93,7 @@ public class Enemie : MonoBehaviour
         Vector3 motherTreeDirection = MotherTree.Instance.TransformWrapper.Position - transformWrapper.Position;
         return motherTreeDirection.normalized;
     }
-    private void DecideIfToWanderOrToReachMotherTree(ref State nextState)
+    private void DecideIfToWanderOrPursueMotherTree(ref State nextState)
     {
         // Change state to wander if needed
         if (!IsThereSomethingInTheWayToMotherTree())
@@ -76,7 +108,7 @@ public class Enemie : MonoBehaviour
             int randomIndex = Random.Range(minInclusive: 0, maxExclusive: wanderDirections.Length);
             this.wanderDirection = wanderDirections[randomIndex];
 
-            timeToChangeDirection = Time.time + cooldownToChangeDirection;
+            timeToEndCurrentWandering = Time.time + cooldownToChangeDirection;
         }
     }
     private bool IsThereSomethingInTheWayToMotherTree()
@@ -94,4 +126,6 @@ public class Enemie : MonoBehaviour
 
         return isThereSomethingInTheWay;
     }
+
+    
 }

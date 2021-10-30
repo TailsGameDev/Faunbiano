@@ -258,7 +258,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7855902136966984198}
   - component: {fileID: 3152431799981884607}
+  - component: {fileID: 4914502766923920056}
   - component: {fileID: 2307778768269567694}
+  - component: {fileID: 2249369966482046568}
   m_Layer: 2
   m_Name: Lumberjack
   m_TagString: Enemie
@@ -297,6 +299,22 @@ MonoBehaviour:
   rb2D: {fileID: 2307778768269567694}
   speed: 3
   cooldownToChangeDirection: 2
+  attacksCooldown: 1
+--- !u!114 &4914502766923920056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855902136966984192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da915d64ee20ba408cf7f870b1dd31c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPower: 10
+  enemie: {fileID: 3152431799981884607}
+  animator: {fileID: 2249369966482046568}
 --- !u!50 &2307778768269567694
 Rigidbody2D:
   serializedVersion: 4
@@ -318,6 +336,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &2249369966482046568
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855902136966984192}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c635652f10aac964698e96d77983d004, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7855902137100966933
 GameObject:
   m_ObjectHideFlags: 0
