@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class EnemyDabageable : Damageable
 {
-    [SerializeField] Animator animator = null;
-    [SerializeField] Shaker shaker = null;
+    [SerializeField] private Animator animator = null;
+    [SerializeField] private Shaker shaker = null;
+
+    [SerializeField] private AudioClip damagedHitSFX = null;
+    [SerializeField] private AudioClip deathSound = null;
 
     private bool markedToBeDestroyed;
 
@@ -33,10 +36,13 @@ public class EnemyDabageable : Damageable
 
     public override void TakeDamage(Damager damager)
     {
+        SFXPlayer.PlaySFX(damagedHitSFX);
+
         CurrentLife -= damager.AttackPower;
 
         if (CurrentLife < LifeToDie)
         {
+            SFXPlayer.PlaySFX(deathSound);
             markedToBeDestroyed = true;
         }
 

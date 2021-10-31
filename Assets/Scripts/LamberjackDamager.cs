@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class LamberjackDamager : Damager
 {
-    [SerializeField] private Enemy enemie;
-    [SerializeField] private Animator animator;
+    [SerializeField] private Enemy enemie = null;
+    [SerializeField] private Animator animator = null;
+    [SerializeField] private AudioSource attackSound = null;
     [SerializeField] private List<Treee.TreeTypeEnum> treeTypesEnabledToHit = null;
 
     private void Awake()
@@ -28,5 +29,6 @@ public class LamberjackDamager : Damager
     public override void DealDamage(Damageable damageable)
     {
         animator.SetTrigger("Attack");
+        attackSound.Play();
     }
 }

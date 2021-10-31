@@ -48,6 +48,9 @@ TagManager:
   - name: Turrent
     uniqueID: 3297897219
     locked: 0
+  - name: Canvas
+    uniqueID: 304682639
+    locked: 0
   - name: Player
     uniqueID: 3840282033
     locked: 0
@@ -59,7 +62,4 @@ TagManager:
     locked: 0
   - name: Bullet
     uniqueID: 3447241541
-    locked: 0
-  - name: Clouds
-    uniqueID: 304682639
     locked: 0
