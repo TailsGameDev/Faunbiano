@@ -317,7 +317,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -997070077
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 199e77e2c49f88b4badb94113160ac64, type: 3}
   m_Color: {r: 0.5754717, g: 0.2273155, b: 0.18729976, a: 1}
@@ -586,6 +586,7 @@ MonoBehaviour:
   cooldown: 1
   bulletSpawnPoint: {fileID: 6684800516870954318}
   damageable: {fileID: 3092115495467952534}
+  applePrototype: {fileID: 922434769603738249, guid: dc25051f01bd387488c8105473011f2a, type: 3}
 --- !u!50 &6784337684088027428
 Rigidbody2D:
   serializedVersion: 4
