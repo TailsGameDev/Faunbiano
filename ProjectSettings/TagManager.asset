@@ -53,9 +53,12 @@ TagManager:
   - name: Enemie
     uniqueID: 1263030363
     locked: 0
+  - name: TurrentDetails
+    uniqueID: 2644631193
+    locked: 0
   - name: Bullet
     uniqueID: 3447241541
     locked: 0
-  - name: TurrentDetails
-    uniqueID: 2644631193
+  - name: Clouds
+    uniqueID: 304682639
     locked: 0

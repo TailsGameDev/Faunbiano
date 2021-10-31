@@ -393,7 +393,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1650336103
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 50
   m_Sprite: {fileID: 7482667652216324306, guid: 199e77e2c49f88b4badb94113160ac64, type: 3}
   m_Color: {r: 0.10338918, g: 0.3018868, b: 0.09825561, a: 1}
@@ -416,8 +416,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4108697508325309282}
   - component: {fileID: 4108697508325309292}
+  - component: {fileID: 1030758395663056424}
   - component: {fileID: 3852341849485222435}
-  - component: {fileID: 6445638335291439180}
   - component: {fileID: 7613443131616539413}
   m_Layer: 0
   m_Name: Mother Tree
@@ -457,11 +457,26 @@ MonoBehaviour:
   treeType: 2
   cooldown: 10
   bulletSpawnPoint: {fileID: 4005288908833949257}
-  damageable: {fileID: 6445638335291439180}
+  damageable: {fileID: 1030758395663056424}
   seedPrototypes:
   - {fileID: 1617304358750261466, guid: 371944d8f417ada4eb2a7149c2c67b7d, type: 3}
   minCooldownToNextSeed: 3
   maxCooldownToNextSeed: 10
+--- !u!114 &1030758395663056424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4108697508325309293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06586c58cb2f4b4e82be7fed612bc16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 200
+  lifeToDie: 20
+  shaker: {fileID: 7613443131616539413}
 --- !u!50 &3852341849485222435
 Rigidbody2D:
   serializedVersion: 4
@@ -483,21 +498,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &6445638335291439180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4108697508325309293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f53d70277c9af724fae3419772000fc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxLife: 200
-  lifeToDie: 20
-  shaker: {fileID: 7613443131616539413}
 --- !u!114 &7613443131616539413
 MonoBehaviour:
   m_ObjectHideFlags: 0
