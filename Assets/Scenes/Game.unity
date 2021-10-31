@@ -154,8 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiePrototypes:
   - {fileID: 3152431799981884607, guid: fc013b02811072f4e94286df337e59a4, type: 3}
-  minTimeBetweenSpawns: 10
-  maxTimeBetweenSpawns: 20
+  minTimeBetweenSpawns: 0
+  maxTimeBetweenSpawns: 1
   spawnPoints:
   - {fileID: 1485756254}
   - {fileID: 1822135817}
@@ -1149,7 +1149,7 @@ GameObject:
   - component: {fileID: 1017136694}
   - component: {fileID: 1017136693}
   m_Layer: 0
-  m_Name: UIOnGameOver
+  m_Name: GameOverManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1167,6 +1167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54514430381974c42858f0da1c5798a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldownToRestartGame: 2
   objectsToActivate:
   - {fileID: 583199623}
   objectsToDectivate:
@@ -1730,6 +1731,10 @@ PrefabInstance:
     - target: {fileID: 5932803324967379050, guid: 9357777c178b5bc4999ca2df9d2da7c5, type: 3}
       propertyPath: m_Name
       value: Apple Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932803324967379050, guid: 9357777c178b5bc4999ca2df9d2da7c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9357777c178b5bc4999ca2df9d2da7c5, type: 3}

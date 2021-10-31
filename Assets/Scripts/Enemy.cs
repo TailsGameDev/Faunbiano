@@ -142,10 +142,13 @@ public class Enemy : MonoBehaviour
         if (isThereSomethingInTheWay)
         {
             CollisionHandler collisionHandler = raycastHit.collider.GetComponent<CollisionHandler>();
-            Treee tree = collisionHandler.ScriptsHolder.GetComponent<Treee>();
-            if (tree != null)
+            if (collisionHandler != null)
             {
-                isThereAnObstacleInTheWay = !treeTypesToIgnoreInPathfinding.Contains(tree.TreeType);
+                Treee tree = collisionHandler.ScriptsHolder.GetComponent<Treee>();
+                if (tree != null)
+                {
+                    isThereAnObstacleInTheWay = !treeTypesToIgnoreInPathfinding.Contains(tree.TreeType);
+                }
             }
         }
 
