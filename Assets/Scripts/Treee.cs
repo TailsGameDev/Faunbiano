@@ -27,6 +27,7 @@ public class Treee : MonoBehaviour
     private List<Enemy> enemiesInRange = new List<Enemy>();
 
     protected TransformWrapper BulletSpawnPoint { get => bulletSpawnPointWrapper; }
+    protected Transform BulletSpawnPointOriginal { get => bulletSpawnPoint; }
     public Damageable Damageable { get => damageable; }
     public TreeTypeEnum TreeType { get => treeType; }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MotherTree : Treee
 {
+    [SerializeField] private Seed[] seedPrototypes = null;
+
     private static MotherTree instance;
 
     private TransformWrapper transformWrapper;
@@ -24,6 +26,11 @@ public class MotherTree : Treee
         }
     }
 
+    private void Update()
+    {
+        
+    }
+
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.collider.tag == Seed.SeedTag)
@@ -32,10 +39,14 @@ public class MotherTree : Treee
             Seed seed = collisionHandler.ScriptsHolder.GetComponent<Seed>();
             if (seed != null)
             {
+                seed.TransformWrapper.Position = BulletSpawnPointOriginal.position;
+                
+                /* NOTE: THIS WAS CAUSING ERROR I DON'T KNOW WHY, PEACE AND LOVE
+                 * FROM YOUR PAST SELF TAILS
                 try
                 {
                     // Put seed back on it's place.
-                    seed.TransformWrapper.Position = BulletSpawnPoint.Position;
+                    // seed.TransformWrapper.Position = BulletSpawnPoint.Position;
                 }
                 catch(System.Exception e)
                 {
@@ -58,6 +69,7 @@ public class MotherTree : Treee
                         }
                     }
                 }
+                */
             }
         }
     }
