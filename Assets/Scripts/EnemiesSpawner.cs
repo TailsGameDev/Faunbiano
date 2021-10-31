@@ -21,6 +21,8 @@ public class EnemiesSpawner : MonoBehaviour
     [SerializeField] private WaveData[] waves = null;
     private int currentWaveIndex;
 
+    [SerializeField] private TMPro.TextMeshProUGUI waveText = null;
+
     private List<Enemy> aliveEnemies = new List<Enemy>();
 
     private float timeToSpawn;
@@ -71,6 +73,8 @@ public class EnemiesSpawner : MonoBehaviour
             {
                 // Start next wave
                 currentWaveIndex++;
+
+                waveText.text = currentWaveIndex.ToString();
             }
             else
             {
