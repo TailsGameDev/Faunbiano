@@ -25,6 +25,18 @@ public class EnemiesSpawner : MonoBehaviour
 
     private float timeToSpawn;
 
+    private static System.Action onGameWin;
+
+    private void OnDestroy()
+    {
+        onGameWin = null;
+    }
+
+    public static void RegisterOnGameWinAction(System.Action action)
+    {
+        onGameWin += action;
+    }
+
     private void Update()
     {
         if (currentWaveIndex < waves.Length)
@@ -75,7 +87,8 @@ public class EnemiesSpawner : MonoBehaviour
         }
         else
         {
-            // TODO: Tell the player he won!
+            onGameWin?.Invoke();
+            this.enabled = false;
         }
     }
 
