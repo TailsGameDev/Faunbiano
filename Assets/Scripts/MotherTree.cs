@@ -5,6 +5,11 @@ using UnityEngine;
 public class MotherTree : Treee
 {
     [SerializeField] private Seed[] seedPrototypes = null;
+    [SerializeField] private float minCooldownToNextSeed = 0.0f;
+    [SerializeField] private float maxCooldownToNextSeed = 0.0f;
+    private float timeToSpawnSeed;
+
+    private Seed seedInMouth;
 
     private static MotherTree instance;
 
@@ -28,7 +33,34 @@ public class MotherTree : Treee
 
     private void Update()
     {
-        
+        // Forget seeds that have already been picked up
+        // Then start to count the cooldown to spawn the next seed
+        if (this.seedInMouth != null && this.seedInMouth.PickedUp)
+        {
+            this.seedInMouth = null;
+
+            float cooldown = Random.Range(minCooldownToNextSeed, maxCooldownToNextSeed);
+            timeToSpawnSeed = Time.time + cooldown;
+        }
+
+        // Spawn seeds
+        if (Time.time > timeToSpawnSeed && seedInMouth == null)
+        {
+            this.seedInMouth = Instantiate
+                (
+                    original:
+                    seedPrototypes[Random.Range(0, seedPrototypes.Length)],
+
+                    position:
+                    BulletSpawnPointOriginal.position,
+
+                    rotation:
+                    Quaternion.identity
+                );
+
+            // Set time so we don't count the cooldown until the seed is picked up
+            timeToSpawnSeed = Mathf.Infinity;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D col)

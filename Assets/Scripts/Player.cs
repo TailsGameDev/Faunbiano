@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
                 nextSeed.TransformWrapper.SetParent(handTransformWrapper);
                 nextSeed.TransformWrapper.LocalPosition = Vector3.zero;
                 nextSeed.RB2D.velocity = Vector3.zero;
+                nextSeed.PickedUp = true;
 
                 seedInHand = nextSeed;
             }
