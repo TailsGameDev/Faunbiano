@@ -979,7 +979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 1641767215870232197}
-  speed: 200
+  speed: 8000
   handTransform: {fileID: 5562277226798208644}
   dropPosition: {fileID: 8230382082702904719}
 --- !u!50 &1641767215870232197

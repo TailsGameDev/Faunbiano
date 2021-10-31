@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 2307778768269567694}
-  speed: 300
+  speed: 12000
   cooldownToChangeDirection: 2
   treeTypesToIgnoreInPathfinding: 0100000002000000
   attacksCooldown: 1

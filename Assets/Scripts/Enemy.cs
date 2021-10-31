@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
         wanderDirections = new Vector3[] { Vector3.left, Vector3.right, Vector3.down };
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         State nextState = currentState;
         switch (currentState)
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
             case State.WALK_TO_MOTHER_TREE:
                 {
                     rb2D.isKinematic = false;
-                    rb2D.AddForce(GetMotherTreeDirection() * speed, ForceMode2D.Force);
+                    rb2D.AddForce(GetMotherTreeDirection() * speed * Time.deltaTime, ForceMode2D.Force);
 
                     if (this.treeToChop != null)
                     {
@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
             case State.WANDER:
                 {
                     rb2D.isKinematic = false;
-                    rb2D.AddForce(this.wanderDirection * speed, ForceMode2D.Force);
+                    rb2D.AddForce(this.wanderDirection * speed * Time.deltaTime, ForceMode2D.Force);
 
                     if (this.treeToChop != null)
                     {

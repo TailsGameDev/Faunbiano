@@ -21,56 +21,59 @@ public class Player : MonoBehaviour
         nullTransformWrapper = new TransformWrapper(null);
     }
 
-    private void FixedUpdate()
-    {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float VerticalInput = Input.GetAxisRaw("Vertical");
-        Vector3 movementDirection;
-        if (Mathf.Abs(horizontalInput) + Mathf.Abs(VerticalInput) > 0.0f)
-        {
-            movementDirection = (Vector3.up * VerticalInput + Vector3.right * horizontalInput).normalized;
-        }
-        else
-        {
-            movementDirection = Vector3.zero;
-        }
-        rb2D.AddForce(speed * movementDirection, ForceMode2D.Force);
-    }
-
     private void Update()
     {
-        bool pickUpInput = Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0);
-        if (pickUpInput && seedInHand != null)
+        // PickUp/Plan logic
         {
-            /* // Drop seed
-            Seed droppedSeed = seedInHand;
-            droppedSeed.TransformWrapper.SetParent(nullTransformWrapper);
-            droppedSeed.TransformWrapper.Position = dropPosition.position;
-            droppedSeed.Collider.enabled = true;
-            droppedSeed.RB2D.isKinematic = false;
-            */
-
-            Instantiate(seedInHand.TreeToPlantPrototype, 
-                            dropPosition.position, Quaternion.identity);
-            Destroy(seedInHand.gameObject);
-
-            seedInHand = null;
-        }
-        else if (pickUpInput && seedInHand == null && seedsInRange.Count > 0)
-        {
-            // PickUp seed
-            if (seedInHand == null)
+            bool pickUpOrPlantInput = Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0);
+            if (pickUpOrPlantInput && seedInHand != null)
             {
-                Seed nextSeed = seedsInRange[0];
-                nextSeed.RB2D.isKinematic = true;
-                nextSeed.Collider.enabled = false;
-                nextSeed.TransformWrapper.SetParent(handTransformWrapper);
-                nextSeed.TransformWrapper.LocalPosition = Vector3.zero;
-                nextSeed.RB2D.velocity = Vector3.zero;
-                nextSeed.PickedUp = true;
+                /* // Drop seed
+                Seed droppedSeed = seedInHand;
+                droppedSeed.TransformWrapper.SetParent(nullTransformWrapper);
+                droppedSeed.TransformWrapper.Position = dropPosition.position;
+                droppedSeed.Collider.enabled = true;
+                droppedSeed.RB2D.isKinematic = false;
+                */
 
-                seedInHand = nextSeed;
+                Instantiate(seedInHand.TreeToPlantPrototype, 
+                                dropPosition.position, Quaternion.identity);
+                Destroy(seedInHand.gameObject);
+
+                seedInHand = null;
             }
+            else if (pickUpOrPlantInput && seedInHand == null && seedsInRange.Count > 0)
+            {
+                // PickUp seed
+                if (seedInHand == null)
+                {
+                    Seed nextSeed = seedsInRange[0];
+                    nextSeed.RB2D.isKinematic = true;
+                    nextSeed.Collider.enabled = false;
+                    nextSeed.TransformWrapper.SetParent(handTransformWrapper);
+                    nextSeed.TransformWrapper.LocalPosition = Vector3.zero;
+                    nextSeed.RB2D.velocity = Vector3.zero;
+                    nextSeed.PickedUp = true;
+
+                    seedInHand = nextSeed;
+                }
+            }
+        }
+
+        // Movement Logic
+        {
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            float VerticalInput = Input.GetAxisRaw("Vertical");
+            Vector3 movementDirection;
+            if (Mathf.Abs(horizontalInput) + Mathf.Abs(VerticalInput) > 0.0f)
+            {
+                movementDirection = (Vector3.up * VerticalInput + Vector3.right * horizontalInput).normalized;
+            }
+            else
+            {
+                movementDirection = Vector3.zero;
+            }
+            rb2D.AddForce(speed * movementDirection * Time.deltaTime, ForceMode2D.Force);
         }
     }
 
