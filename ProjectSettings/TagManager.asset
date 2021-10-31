@@ -43,11 +43,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 3840282033
-    locked: 0
   - name: Turrent
     uniqueID: 3297897219
+    locked: 0
+  - name: Player
+    uniqueID: 3840282033
     locked: 0
   - name: Enemie
     uniqueID: 1263030363

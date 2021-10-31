@@ -42,18 +42,23 @@ public class Player : MonoBehaviour
         bool pickUpInput = Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0);
         if (pickUpInput && seedInHand != null)
         {
-            // Drop seed
+            /* // Drop seed
             Seed droppedSeed = seedInHand;
             droppedSeed.TransformWrapper.SetParent(nullTransformWrapper);
             droppedSeed.TransformWrapper.Position = dropPosition.position;
             droppedSeed.Collider.enabled = true;
             droppedSeed.RB2D.isKinematic = false;
+            */
+
+            Instantiate(seedInHand.TreeToPlantPrototype, 
+                            dropPosition.position, Quaternion.identity);
+            Destroy(seedInHand.gameObject);
 
             seedInHand = null;
         }
         else if (pickUpInput && seedInHand == null && seedsInRange.Count > 0)
         {
-            // PickUp deed
+            // PickUp seed
             if (seedInHand == null)
             {
                 Seed nextSeed = seedsInRange[0];

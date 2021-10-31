@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   col: {fileID: 8940291909532811528}
   rb2D: {fileID: 3715304289941623881}
+  treeToPlantPrototype: {fileID: 7283966006198031937, guid: 9357777c178b5bc4999ca2df9d2da7c5, type: 3}
 --- !u!114 &4901651738748416353
 MonoBehaviour:
   m_ObjectHideFlags: 0
