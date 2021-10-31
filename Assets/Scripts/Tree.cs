@@ -23,6 +23,7 @@ public class Tree : MonoBehaviour
     
     [SerializeField] private Damageable damageable;
 
+    // NOTE enemiesInRange code is duplicated in Player.cs
     private List<Enemie> enemiesInRange = new List<Enemie>();
 
     protected float Cooldown { get => cooldown; }
