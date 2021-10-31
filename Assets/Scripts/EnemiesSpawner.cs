@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemieSpawner : MonoBehaviour
+public class EnemiesSpawner : MonoBehaviour
 {
-    [SerializeField] private Enemie[] enemiePrototypes = null;
+    [SerializeField] private Enemy[] enemiePrototypes = null;
     [SerializeField] private float minTimeBetweenSpawns = 0.0f;
     [SerializeField] private float maxTimeBetweenSpawns = 0.0f;
 

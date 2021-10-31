@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemie : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     private enum State
     {
@@ -15,7 +15,7 @@ public class Enemie : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2D = null;
     [SerializeField] private float speed = 0.0f;
     [SerializeField] private float cooldownToChangeDirection = 0.0f;
-    [SerializeField] private List<Tree.TreeTypeEnum> treeTypesToIgnoreInPathfinding = null;
+    [SerializeField] private List<Treee.TreeTypeEnum> treeTypesToIgnoreInPathfinding = null;
 
     private Vector3[] wanderDirections;
     private Vector3 wanderDirection = Vector3.zero;
@@ -24,12 +24,17 @@ public class Enemie : MonoBehaviour
 
     [SerializeField] private float attacksCooldown = 0.0f;
     private float timeToAttack;
-    private Tree treeToChop;
+    private Treee treeToChop;
     private Damager damager = null;
 
+    [SerializeField] private Damageable damageable = null;
+
+    public static readonly string EnemyTag = "Enemy";
+
     public TransformWrapper TransformWrapper { get => transformWrapper; }
-    public Tree TreeToChop { set => treeToChop = value; }
+    public Treee TreeToChop { set => treeToChop = value; }
     public Damager Damager { set => damager = value; }
+    public Damageable Damageable { get => damageable; }
 
     private void Awake()
     {
@@ -137,7 +142,7 @@ public class Enemie : MonoBehaviour
         if (isThereSomethingInTheWay)
         {
             CollisionHandler collisionHandler = raycastHit.collider.GetComponent<CollisionHandler>();
-            Tree tree = collisionHandler.ScriptsHolder.GetComponent<Tree>();
+            Treee tree = collisionHandler.ScriptsHolder.GetComponent<Treee>();
             if (tree != null)
             {
                 isThereAnObstacleInTheWay = !treeTypesToIgnoreInPathfinding.Contains(tree.TreeType);

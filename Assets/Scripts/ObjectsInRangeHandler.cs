@@ -8,7 +8,7 @@ public class ObjectsInRangeHandler : MonoBehaviour
     private enum ObjectTypes
     {
         NONE = 0,
-        ENEMIE = 1,
+        ENEMY = 1,
         SEED = 2,
     }
 
@@ -20,7 +20,7 @@ public class ObjectsInRangeHandler : MonoBehaviour
     {
         switch (objectType)
         {
-            case ObjectTypes.ENEMIE:
+            case ObjectTypes.ENEMY:
                 break;
             case ObjectTypes.SEED:
                 break;
@@ -29,25 +29,25 @@ public class ObjectsInRangeHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Enemie")
+        if (col.tag == Enemy.EnemyTag)
         {
-            GameObject enemieScriptsNode = col.GetComponent<CollisionHandler>().ScriptsHolder;
-            Enemie enemie = enemieScriptsNode.GetComponent<Enemie>();
+            GameObject enemyScriptsNode = col.GetComponent<CollisionHandler>().ScriptsHolder;
+            Enemy enemy = enemyScriptsNode.GetComponent<Enemy>();
 
-            if (!enemiesInRange.Contains(enemie))
+            if (!enemiesInRange.Contains(enemy))
             {
-                enemiesInRange.Add(enemie);
+                enemiesInRange.Add(enemy);
             }
         }
     }
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.tag == "Enemie")
+        if (col.tag == Enemy.EnemyTag)
         {
-            GameObject enemieScriptsNode = col.GetComponent<CollisionHandler>().ScriptsHolder;
-            Enemie enemie = enemieScriptsNode.GetComponent<Enemie>();
+            GameObject enemyScriptsNode = col.GetComponent<CollisionHandler>().ScriptsHolder;
+            Enemy enemy = enemyScriptsNode.GetComponent<Enemy>();
 
-            enemiesInRange.Remove(enemie);
+            enemiesInRange.Remove(enemy);
         }
     }
 }

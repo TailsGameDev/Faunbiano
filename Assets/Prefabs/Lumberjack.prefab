@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3005845307973224718}
   m_Layer: 2
   m_Name: Axe
-  m_TagString: Enemie
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6581196000137120588}
   m_Layer: 2
   m_Name: Axe Handle (1)
-  m_TagString: Enemie
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 5939209914685857508}
   m_Layer: 2
   m_Name: Axe Handle
-  m_TagString: Enemie
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,12 +258,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7855902136966984198}
   - component: {fileID: 3152431799981884607}
+  - component: {fileID: 3725525726192011755}
   - component: {fileID: 4914502766923920056}
   - component: {fileID: 2307778768269567694}
   - component: {fileID: 2249369966482046568}
+  - component: {fileID: 2867618131635545500}
   m_Layer: 2
   m_Name: Lumberjack
-  m_TagString: Enemie
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,6 +303,23 @@ MonoBehaviour:
   cooldownToChangeDirection: 2
   treeTypesToIgnoreInPathfinding: 0100000002000000
   attacksCooldown: 1
+  damageable: {fileID: 3725525726192011755}
+--- !u!114 &3725525726192011755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855902136966984192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d4948b04cf6ab44aa131ea620b8044c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 50
+  lifeToDie: 5
+  animator: {fileID: 2249369966482046568}
+  shaker: {fileID: 2867618131635545500}
 --- !u!114 &4914502766923920056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +376,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2867618131635545500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855902136966984192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e70c3e4a0c4e4a40be82880811b0ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsAmount: 6
+  distanceRange: 0.1
+  loopDuration: 0.03
 --- !u!1 &7855902137100966933
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +403,7 @@ GameObject:
   - component: {fileID: 7855902137100966923}
   m_Layer: 2
   m_Name: Lumberjack Eye Right
-  m_TagString: Enemie
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -453,7 +487,7 @@ GameObject:
   - component: {fileID: 7855902137181348652}
   m_Layer: 2
   m_Name: Lumberjack Sprites
-  m_TagString: Enemie
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -579,7 +613,7 @@ GameObject:
   - component: {fileID: 7855902137337541035}
   m_Layer: 2
   m_Name: Lumberjack Hat
-  m_TagString: Enemie
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -661,7 +695,7 @@ GameObject:
   - component: {fileID: 7855902138131839243}
   m_Layer: 2
   m_Name: Lumberjack Clothes
-  m_TagString: Enemie
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -743,7 +777,7 @@ GameObject:
   - component: {fileID: 7855902138520675677}
   m_Layer: 2
   m_Name: Lumberjack Skin
-  m_TagString: Enemie
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -825,7 +859,7 @@ GameObject:
   - component: {fileID: 7855902138546715263}
   m_Layer: 2
   m_Name: Lumberjack Eye Left
-  m_TagString: Enemie
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -838,7 +872,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7855902138546715257}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.18999994, y: 0.119999886, z: 0}
+  m_LocalPosition: {x: -0.18999994, y: 0.1199999, z: 0}
   m_LocalScale: {x: 0.2018, y: 0.2018, z: 0.2018}
   m_Children: []
   m_Father: {fileID: 7855902137181348653}

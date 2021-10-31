@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AppleTree : Tree
+public class AppleTree : Treee
 {
     [SerializeField] private Bullet applePrototype = null;
 

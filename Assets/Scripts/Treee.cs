@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : MonoBehaviour
+public class Treee : MonoBehaviour
 {
     public enum TreeTypeEnum
     {
@@ -24,9 +24,7 @@ public class Tree : MonoBehaviour
     [SerializeField] private Damageable damageable;
 
     // NOTE enemiesInRange code is duplicated in Player.cs
-    private List<Enemie> enemiesInRange = new List<Enemie>();
-
-    protected float Cooldown { get => cooldown; }
+    private List<Enemy> enemiesInRange = new List<Enemy>();
 
     protected TransformWrapper BulletSpawnPoint { get => bulletSpawnPointWrapper; }
     public Damageable Damageable { get => damageable; }
@@ -52,13 +50,13 @@ public class Tree : MonoBehaviour
     {
         return enemiesInRange.Count > 0;
     }
-    protected Enemie GetClosestEnemie()
+    protected Enemy GetClosestEnemie()
     {
         float minDif = Mathf.Infinity;
-        Enemie closestEnemie = enemiesInRange[0];
+        Enemy closestEnemie = enemiesInRange[0];
         for (int e = 1; e < enemiesInRange.Count; e++)
         {
-            Enemie loopEnemie = enemiesInRange[e];
+            Enemy loopEnemie = enemiesInRange[e];
 
             // Calculate distance
             float xDif = Mathf.Abs(transform.position.x - loopEnemie.transform.position.x);
@@ -76,10 +74,10 @@ public class Tree : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Enemie")
+        if (col.tag == Enemy.EnemyTag)
         {
             GameObject enemieScriptsNode = col.GetComponent<CollisionHandler>().ScriptsHolder;
-            Enemie enemie = enemieScriptsNode.GetComponent<Enemie>();
+            Enemy enemie = enemieScriptsNode.GetComponent<Enemy>();
 
             if (!enemiesInRange.Contains(enemie))
             {
@@ -89,10 +87,10 @@ public class Tree : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.tag == "Enemie")
+        if (col.tag == Enemy.EnemyTag)
         {
             GameObject enemieScriptsNode = col.GetComponent<CollisionHandler>().ScriptsHolder;
-            Enemie enemie = enemieScriptsNode.GetComponent<Enemie>();
+            Enemy enemie = enemieScriptsNode.GetComponent<Enemy>();
 
             enemiesInRange.Remove(enemie);
         }

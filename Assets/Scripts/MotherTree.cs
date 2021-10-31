@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MotherTree : Tree
+public class MotherTree : Treee
 {
     private static MotherTree instance;
 
@@ -32,8 +32,32 @@ public class MotherTree : Tree
             Seed seed = collisionHandler.ScriptsHolder.GetComponent<Seed>();
             if (seed != null)
             {
-                // Put seed back on it's place.
-                seed.TransformWrapper.Position = BulletSpawnPoint.Position;
+                try
+                {
+                    // Put seed back on it's place.
+                    seed.TransformWrapper.Position = BulletSpawnPoint.Position;
+                }
+                catch(System.Exception e)
+                {
+                    Debug.LogError(e.Message);
+                    
+                    Debug.LogError("BulletSpawnPoint: " + BulletSpawnPoint);
+                    if (BulletSpawnPoint != null)
+                    {
+                        Debug.LogError("BulletSpawnPoint.Position: "+BulletSpawnPoint.Position);
+                    }
+
+                    Debug.LogError("seed: "+seed);
+                    if (seed != null)
+                    {
+                        Debug.LogError("seed transform wrapper: " + seed.TransformWrapper);
+                        if (seed.TransformWrapper != null)
+                        {
+                            Debug.LogError("seed transform wrapper position: "+
+                                seed.TransformWrapper.Position);
+                        }
+                    }
+                }
             }
         }
     }

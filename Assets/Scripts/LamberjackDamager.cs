@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class LamberjackDamager : Damager
 {
-    [SerializeField] private Enemie enemie;
+    [SerializeField] private Enemy enemie;
     [SerializeField] private Animator animator;
-    [SerializeField] private List<Tree.TreeTypeEnum> treeTypesEnabledToHit = null;
+    [SerializeField] private List<Treee.TreeTypeEnum> treeTypesEnabledToHit = null;
 
     private void Awake()
     {
@@ -17,7 +17,7 @@ public class LamberjackDamager : Damager
         CollisionHandler collisionHandler = col.collider.GetComponent<CollisionHandler>();
         if (collisionHandler != null)
         {
-            Tree tree = collisionHandler.ScriptsHolder.GetComponent<Tree>();
+            Treee tree = collisionHandler.ScriptsHolder.GetComponent<Treee>();
             // TODO Not accept all types of trees
             if (tree != null && treeTypesEnabledToHit.Contains(tree.TreeType))
             {
@@ -27,6 +27,6 @@ public class LamberjackDamager : Damager
     }
     public override void DealDamage(Damageable damageable)
     {
-        animator.SetTrigger("attack");
+        animator.SetTrigger("Attack");
     }
 }
